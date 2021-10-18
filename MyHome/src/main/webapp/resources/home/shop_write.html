@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  제품등록  </title> 
+    <link rel="shortcut icon" href="../img/home-icon.png">
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<style>
+     span{
+        color: beige;
+    }
+    .ex{
+      margin-left: 400px;
+    }
+</style>
+</head>
+<body>
+    <main class="mt-3">
+     <div class="container">
+        <h2 class="text-center">제품등록</h2>
+        <div class="mb-3 row">
+            <label  class="col-md-3 col-form-label">제품명</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" >
+            </div>
+        </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">제품가격</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >원</span>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">배송비</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >원</span>
+                      </div>
+                </div>
+            </div>   
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">추가배송비(도서산간)</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >원</span>
+                      </div>
+                </div>
+            </div>   
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">제품 카테고리</label>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-auto">
+                            <select class="form-select">
+                                <option>가구</option>
+                            </select>
+                            <select class="form-select">
+                                <option>침실</option>
+                            </select>
+                            <select class="form-select">
+                                <option>조명</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">태그</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" >
+                </div>
+            </div>     
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">출고일</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >일 이내 출고</span>
+                      </div>
+                </div>
+            </div>    
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">섬네일 이미지</label>
+                <div class="col-md-9">
+                    <input class="form-control" type="file" accept="image/png,image/jpeg">
+                    <div class="alert alert-secondary" role="alert">
+                   <ul>
+                       <li>이미지 사이즈 : 350*350</li>
+                       <li>파일 사이즈 : 1M 이하</li>
+                       <li>파일 확장자 : png,jpg만 가능</li>
+                   </ul>
+                      </div>
+                </div>
+            </div>  
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">제품 이미지</label>
+                <div class="col-md-9">
+                    <input class="form-control" type="file" accept="image/png,image/jpeg" multiple>
+                    <div class="alert alert-secondary" role="alert">
+                   <ul>
+                       <li>최대 5개가능</li>
+                       <li>이미지 사이즈 : 350*350</li>
+                       <li>파일 사이즈 : 1M 이하</li>
+                       <li>파일 확장자 : png,jpg만 가능</li>
+                   </ul>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">제품 설명이미지</label>
+                <div class="col-md-9">
+                    <input class="form-control" type="file" accept="image/png,image/jpeg" >
+                    <div class="alert alert-secondary" role="alert">
+                   <ul>
+                       <li>파일 사이즈 : 5M 이하</li>
+                       <li>파일 확장자 : png,jpg만 가능</li>
+                   </ul>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row text-center">
+                <div class="col-12 d-grid p-1 ">
+                    <button type="button" class="btn btn-lg btn-dark">취소하기</button>
+                    <button type="button" class="btn btn-lg btn-info">등록하기</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

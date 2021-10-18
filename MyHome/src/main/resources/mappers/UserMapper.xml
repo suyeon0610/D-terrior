@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.spring.myWeb.user.mapper.IUserMapper">
+     <resultMap type="com.spring.myWeb.command.UserVO" id="user">
+        <result column="id" property="id" />
+        <result column="pw" property="pw" />
+        <result column="nick_name" property="nickName" />
+        <result column="user_num" property="userNum" />
+        <result column="phone1" property="phone1" />
+        <result column="phone2" property="phone2" />
+        <result column="phone3" property="phone3" />
+        <result column="grade" property="grade" />
+        <result column="interest" property="interest" />
+        <result column="addr_basic" property="addrBasic" />
+        <result column="addr_detail" property="addrDetail" />
+        <result column="zip_num" property="zipNum" />
+        <result column="reg_date" property="regDate"/>
+        <result column="scrap" property="scrap"/>
+        <result column="paper" property="paper"/>
+     </resultMap>
+     
+     <resultMap type="com.spring.myWeb.command.MyHomeVO" id="MyHomeList">
+     	<id property="bno" column="bno"/>
+     	<result property="writer" column="writer"/>
+     	<result property="title" column="title"/>
+     	<result property="regDate" column="regdate"/>
+     	<result property="viewCnt" column="view_cnt"/>
+     </resultMap>
+ 
+ 	<resultMap type="com.spring.myWeb.command.QuizVO" id="QuizList">
+ 		<id property="quizNum" column="quiz_num"/>
+ 		<result property="title" column="title"/>
+ 		<result property="type" column="type"/>
+ 		<result property="writer" column="writer"/>
+ 		<result property="regDate" column="reg_date"/>
+ 		<result property="views" column="views"/> 
+ 	</resultMap>
+ 	
+ 	<sql id="type">
+ 		<if test="type == 'home'">FROM myhome WHERE writer = #{nick}</if>
+ 		<if test="type == 'quiz'">FROM quiz WHERE writer = #{nick}</if>
+ 		<if test="type == 'recoQuiz'">FROM quiz WHERE writer = #{nick}</if>
+ 		<if test="type == 'upgrade'">FROM users WHERE major is not null AND grade = 'normal'</if>
+ 	</sql>
+ 	
+ 	<!--  
+ 	<sql id="articles">
+ 		<if test="articleType"></if>
+ 	</sql>
+ 	-->
+ 	 	
+    <insert id="userJoin">
+        insert into users(id, pw, user_num, nick_name, phone1, phone2, phone3, interest, addr_basic, addr_detail, zip_num, major, profile, scrap, paper)
+        values (#{id}, #{pw}, user_seq.NEXTVAL, #{nickName}, #{phone1, jdbcType=VARCHAR}, #{phone2, jdbcType=VARCHAR}, #{phone3, jdbcType=VARCHAR}, #{interest, jdbcType=VARCHAR}, #{addrBasic, jdbcType=VARCHAR}, #{addrDetail, jdbcType=VARCHAR}, #{zipNum, jdbcType=VARCHAR}, #{major, jdbcType=VARCHAR}, #{profile, jdbcType=VARCHAR}, #{scrap, jdbcType=VARCHAR}, #{paper, jdbcType=VARCHAR})
+    </insert>
+    
+    <update id="userUpdate">
+    	UPDATE users
+    	SET phone1=#{phone1, jdbcType=VARCHAR}, phone2=#{phone2, jdbcType=VARCHAR}, phone3=#{phone3, jdbcType=VARCHAR}, interest=#{interest, jdbcType=VARCHAR}, addr_basic=#{addrBasic, jdbcType=VARCHAR}, addr_detail=#{addrDetail, jdbcType=VARCHAR}, zip_num=#{zipNum, jdbcType=VARCHAR}, profile=#{profile, jdbcType=VARCHAR}
+		WHERE id=#{id}    	
+    </update>
+ 	
+ 	<delete id="userDelete">
+ 		DELETE FROM users
+ 		WHERE id = #{id} 
+ 	</delete>
+ 	
+ 	<select id="userLogin" resultMap="user">
+		SELECT * FROM users
+		WHERE id = #{id}
+	</select>
+	
+	<select id="idCheck" resultType="int">
+		SELECT COUNT (*) FROM users
+		WHERE id = #{id}
+	</select>
+	
+	<select id="nickCheck" resultType="int">
+		SELECT COUNT (*) FROM users
+		WHERE nick_name = #{nickName}
+	</select>
+	
+	<select id="userInfo" resultMap="user">
+		SELECT * FROM users
+		WHERE user_num = #{userNum}
+	</select>
+	
+	<select id="homeArticles" resultMap="MyHomeList">
+		SELECT *
+		FROM
+		(
+			SELECT ROWNUM rn, tbl.*
+			FROM
+			(
+				SELECT 
+				h.bno, h.writer, h.title, h.regdate, h.view_cnt
+				FROM users u LEFT JOIN myhome h
+				ON u.nick_name = h.writer		
+				WHERE u.nick_name = #{nick}
+				ORDER BY h.bno DESC
+			) tbl
+		)
+		<![CDATA[
+		WHERE rn > (#{page.pageNum}-1)*#{page.countPerPage}
+		AND rn <= #{page.pageNum}*#{page.countPerPage}
+		]]>
+	</select>
+	
+	<select id = "homeArticle" resultType="com.spring.myWeb.command.MyHomeVO">
+		SELECT * FROM myhome
+		WHERE bno = #{bno}
+	</select>
+	
+	<select id="quizArticles" resultMap="QuizList">
+		SELECT *
+		FROM
+		(
+			SELECT ROWNUM rn, tbl.*
+			FROM
+			(
+				SELECT *
+				FROM quiz
+				<choose>
+					<when test="type == 'recoQuiz'">WHERE type LIKE '%'||#{major}||'%'</when>
+					<otherwise>WHERE writer = #{nick}</otherwise>
+				</choose>
+				ORDER BY quiz_num DESC
+			) tbl
+		)
+		<![CDATA[
+		WHERE rn > (#{page.pageNum}-1)*#{page.countPerPage}
+		AND rn <= #{page.pageNum}*#{page.countPerPage}
+		]]>
+	</select>
+	
+	
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*)
+		<include refid="type" />
+	</select>
+	
+	<select id="getScrap" resultType="String">
+		SELECT scrap
+		FROM users
+		WHERE nick_name = #{nick}
+	</select>
+	
+	<select id="proInfo" resultMap="user">
+		SELECT *
+		FROM
+		(
+			SELECT ROWNUM rn, tbl.*
+			FROM
+			(	
+				SELECT *
+				FROM users
+				WHERE major is not null
+				AND grade = 'normal'
+				ORDER BY user_num DESC
+			) tbl
+		)
+		<![CDATA[
+		WHERE rn > (#{pageNum}-1)*#{countPerPage}
+		AND rn <= #{pageNum}*#{countPerPage}
+		]]>
+	</select>
+	
+	<update id="upgrade">
+		UPDATE users SET grade='pro'
+		WHERE user_num = #{userNum}
+	</update>
+ 
+</mapper>

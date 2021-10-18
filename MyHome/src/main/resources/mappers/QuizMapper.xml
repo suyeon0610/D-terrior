@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.myWeb.quiz.mapper.IQuizMapper">
+
+	<resultMap type="com.spring.myWeb.command.QuizVO" id="QuizMap">
+		<id property="quizNum" column="quiz_num" />
+		<result property="regDate" column="reg_date" />
+		<result property="updateDate" column="update_date" />
+		<result property="fileLoca" column="file_loca"/>
+		<result property="answerCnt" column="answer_cnt"/>
+	</resultMap>
+		
+	<sql id="search">
+		<if test="condition == 'title'">WHERE title LIKE '%'||#{keyword}||'%'</if>
+		<if test="condition == 'writer'">WHERE writer LIKE '%'||#{keyword}||'%'</if>
+		<if test="condition == 'content'">WHERE content LIKE '%'||#{keyword}||'%'</if>
+		<if test="condition == 'titleContent'">WHERE title LIKE '%'||#{keyword}||'%' OR content LIKE '%'||#{keyword}||'%'</if>
+		<if test="condition == 'type'">WHERE type LIKE '%'||#{keyword}||'%'</if>
+	</sql>
+	
+	<insert id="regist">
+  		INSERT INTO quiz(quiz_num, writer, title, content, type, file_loca)
+ 		VALUES(quiz_seq.NEXTVAL, #{writer}, #{title}, #{content}, #{type}, #{fileLoca} )
+  	</insert>
+	
+	<select id="getList" resultMap="QuizMap">
+  		SELECT *
+		FROM( 
+	  		SELECT ROWNUM as rn, tbl.*
+	  		FROM
+	 		( 	
+				select quiz.*, answer_cnt
+				from quiz 
+				left join 
+				(
+				select quiz_num, count(*) as answer_cnt
+				from answer
+				group by quiz_num
+				) ans
+				on quiz.quiz_num = ans.quiz_num
+				<include refid="search" />
+				<choose>		
+					<when test="sort == 'popul'">
+						ORDER BY answer_cnt DESC nulls last, quiz.quiz_num DESC
+		 			</when>
+		 			<otherwise>
+		 				ORDER BY quiz.quiz_num DESC
+		 			</otherwise>
+	 			</choose>
+	  		) tbl
+  		)
+  		<![CDATA[
+  		WHERE rn > (#{pageNum}-1) * #{countPerPage} 
+  		AND rn <= (#{pageNum} * #{countPerPage})
+  		]]>
+  	</select>
+  	
+  	<select id="getDetail" resultMap="QuizMap">
+  		SELECT * FROM quiz
+  		WHERE quiz_num = #{quizNum}
+  	</select>
+  	
+  	<select id="getTotalCount" resultType="int">
+  		SELECT COUNT(*) FROM quiz
+  		<include refid="search" />
+  	</select>
+  	
+  	<update id="modify">
+  		UPDATE quiz 
+  		SET title=#{title}, content=#{content}, type=#{type}, file_loca=#{fileLoca}, update_date=SYSDATE
+  		WHERE quiz_num = #{quizNum}
+  	</update>
+  
+  	<delete id="delete">
+  		DELETE FROM quiz
+  		WHERE quiz_num = #{quizNum}
+  	</delete>
+  	
+  	<update id="updateCnt">
+  		UPDATE quiz
+  		SET views = views + 1
+  		WHERE quiz_num = #{quizNum}
+  	</update>
+
+</mapper>

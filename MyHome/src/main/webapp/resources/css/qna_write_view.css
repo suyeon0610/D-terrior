@@ -1,0 +1,109 @@
+
+/*======= 웹 폰트 선언 =======*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.contentForm {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th {
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.btns {
+    text-align: right;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.reply-wrap {
+    width: 100%;
+}
+
+.pag {
+    margin-top: 10px;
+   
+}
+.sideul {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+/* ======= 댓글 ======== */
+
+.reply-wrap {
+    background: #f5f5f5;
+    padding: 15px;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+
+ .userimger {
+    display: inline;
+}
+
+
+.reply-wrap .reply-image {
+	position:relative;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+
+}
+
+.reply-wrap .reply-content {
+    padding-left: 60px;
+}
+
+.reply-content textarea {
+    resize: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.reply-input > .form-control {
+    width: 200px;
+    margin-bottom: 5px;
+}
+
+.reply-input {
+    float: left;
+}
+
+.reply-group button {
+    float: right;
+}
+
+.reply-group small {
+    margin-left: 10px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.reply-group a {
+    text-decoration: none;
+    color: #777;
+    float: right;
+}
+.btcon{
+    float: right;
+    margin-bottom: 20px;
+}
+.inimg{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.pro-nick{
+    color:cornflowerblue;
+}
+

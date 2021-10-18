@@ -1,0 +1,70 @@
+$(document).ready(function(){ 
+	$('#hide1').click(function(){ 
+		$('#hider1').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide2').click(function(){ 
+		$('#hider2').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide3').click(function(){ 
+		$('#hider3').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide4').click(function(){ 
+		$('#hider4').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide5').click(function(){ 
+		$('#hider5').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide6').click(function(){ 
+		$('#hider6').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide7').click(function(){ 
+		$('#hider7').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide8').click(function(){ 
+		$('#hider8').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide9').click(function(){ 
+		$('#hider9').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide10').click(function(){ 
+		$('#hider10').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide11').click(function(){ 
+		$('#hider11').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide12').click(function(){ 
+		$('#hider12').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide13').click(function(){ 
+		$('#hider13').toggle(); 
+	});
+});
+$(document).ready(function(){ 
+	$('#hide14').click(function(){ 
+		$('#hider14').toggle(); 
+	});
+});

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> QnA </title>
+    <link rel="shortcut icon" href="../img/home-icon.png">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/qna_write_view.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+
+
+</head>
+
+<body>
+    <form action="#" method="post">
+        <div class="contentForm col-xs-12 col-md-12"> <input type="hidden" name="#" value="#"> <input type="hidden"
+                name="groupId" value="#">
+            <input type="hidden" name="depth" value="#"> <input type="hidden" name="#" value="#">
+            <div class="input-group input-group-sm" role="group" aria-label="...">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="30%">글쓴이</th>
+                            <td width="70%">아이디</td>
+                        </tr>
+                        <tr>
+                            <th style="padding-bottom: 15px;">제목</th>
+                            <td>title</td>
+                        </tr>
+                        <tr>
+                            <th style="padding-bottom: 15px;">날짜</th>
+                            <td>2021-09-14 </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr height="200" valign="top" style="background-color: #fff;">
+                            <td colspan="4">
+                                글내용
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                조회수:
+                            </td>
+                        </tr>               
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-group btn-group-sm btcon" role="group"
+            aria-label="..."> <input type="submit" class="btn btn-info btns" value="수정"> <input
+                type="reset" class="btn btn-info btns" value="삭제"> <input type="button"
+                class="btn btn-info btns" value="목록"> </div>
+
+    </form>
+
+
+    <!-- Reply Form {s} -->
+
+    
+        <div class="row" style="width: 105%;">
+            <div class="col-xs-12 col-md-12 write-wrap">
+                <div class="reply-wrap">
+                    <div class="reply-image">
+                        <img class="userimg" src="../img/icon.png" alt="prof">
+                    </div>
+                    <div class="reply-content">
+                        <div class="reply-group clearfix">
+                           
+                            <textarea class="form-control" rows="3" placeholder="댓글을 작성해주세요"></textarea>
+                            <button class="btn btn-info">등록</button>
+                            <button class="btn btn-info"><svg width="24" height="20" viewBox="0 0 24 20"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <path fill="#292929" fill-rule="nonzero"
+                                        d="M3.22 20C1.446 20 0 18.547 0 16.765V6.176c0-1.782 1.446-3.235 3.22-3.235h3.118L7.363.377A.586.586 0 0 1 7.903 0h8.195c.24.003.453.152.54.377l1.024 2.564h3.118c1.774 0 3.22 1.453 3.22 3.235v10.589C24 18.547 22.554 20 20.78 20H3.22zm0-1.176h17.56a2.037 2.037 0 0 0 2.05-2.06V6.177c0-1.15-.904-2.058-2.05-2.058h-3.512a.585.585 0 0 1-.54-.368l-1.024-2.574H8.296L7.27 3.75a.585.585 0 0 1-.54.368H3.22a2.037 2.037 0 0 0-2.05 2.058v10.589c0 1.15.904 2.059 2.05 2.059zM12 17.059c-3.064 0-5.561-2.51-5.561-5.588 0-3.08 2.497-5.589 5.561-5.589s5.561 2.51 5.561 5.589c0 3.079-2.497 5.588-5.561 5.588zm0-1.177a4.392 4.392 0 0 0 4.39-4.411A4.392 4.392 0 0 0 12 7.059a4.392 4.392 0 0 0-4.39 4.412A4.392 4.392 0 0 0 12 15.882z">
+                                    </path>
+                                </svg></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-md-12 reply-wrap">
+                    <div class="reply-image">
+                        <img class="userimg" src="../img/icon.png" alt="prof">
+                    </div>
+                    <div class="reply-content">
+                        <div class="reply-group">
+                            <strong class="left">글쓴이</strong>
+                            <small class="left">2021/12/12</small>
+                            <div class="btn-group-sm" role="group">
+                                <button type="button" class="btn btn-info">삭제</button>
+                                <button type="button" class="btn btn-info">수정</button>
+                            </div>
+
+                        </div>
+                        <p>여기는 댓글 영역</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="pagination-sm pag">
+            <ul class="pagination justify-content: center">
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        이전
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        1
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        2
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        3
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        4
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        5
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        다음
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

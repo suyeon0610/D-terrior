@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  내집뽐내기  </title> 
+    <link rel="shortcut icon" href="../img/home-icon.png">
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<style>
+  body {
+  width: 480px;
+  margin: 0 auto;
+}
+     span{
+        color: beige;
+    }
+    .ex{
+      margin-left: 400px;
+    }
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}
+.cont{
+    border: 1px solid black;
+    width: 100%;
+    height: 200px;
+}
+</style>
+</head>
+<body>
+    <main class="mt-3">
+     <div class="container">
+        <h2 class="text-center">내집 뽐내기</h2>
+        <div class="mb-3 row">
+            <label  class="col-md-3 col-form-label">주거형태</label>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-auto">
+                        <select class="form-select" style="width: 317%;">
+                            <option>선택</option>
+                            <option>본인방</option>
+                            <option>원룸</option>
+                            <option>오피스텔</option>
+                            <option>단독주택</option>
+                            <option>빌라&연립</option>
+                            <option>아파트</option>
+                            <option>상업공간</option>
+                            <option>사무공간</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">평수</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >평</span>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">방 개수</label>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-auto">
+                            <select class="form-select" style="width: 393%;">
+                                <option>선택</option>
+                                <option>1개</option>
+                                <option>1.5개</option>
+                                <option>2개</option>
+                                <option>3개</option>
+                                <option>4개</option>
+                                <option>5개이상</option>
+                            </select>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>   
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">방향</label>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-auto">
+                            <select class="form-select" style="width: 450%;">
+                                <option>선택</option>
+                                <option>남향</option>
+                                <option>서향</option>
+                                <option>동향</option>
+                                <option>북향</option>
+                                <option>남서향</option>
+                                <option>남동향</option>
+                                <option>북서향</option>
+                                <option>북동향</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">반려동물 유무</label>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-auto">
+                            <select class="form-select" style="width: 450%;">
+                                <option>선택</option>
+                                <option>없음</option>
+                                <option>강아지</option>
+                                <option>고양이</option>
+                                <option>파충류</option>
+                                <option>어류</option>
+                                <option>조류</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">가족 구성원</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >명</span>
+                      </div>
+                </div>
+            </div>
+        
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">태그</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" >
+                </div>
+            </div>     
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">출고일</label>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control">
+                        <span class="input-group-text" >일 이내 출고</span>
+                      </div>
+                </div>
+            </div>    
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">로고 이미지</label>
+                <div class="col-md-9">
+                    <input class="form-control" type="file" accept="image/png,image/jpeg">
+                    <div class="alert alert-secondary" role="alert">
+                   <ul>
+                       <li>이미지 사이즈 : 980*3980</li>
+                       <li>파일 사이즈 : 5M 이하</li>
+                       <li>파일 확장자 : png,jpg만 가능</li>
+                   </ul>
+                      </div>
+                </div>
+            </div>  
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">이미지</label>
+                <div class="col-md-9">
+                    <input class="form-control" type="file" accept="image/png,image/jpeg" multiple>
+                    <div class="alert alert-secondary" role="alert">
+                   <ul>
+                       <li>최대 5개가능</li>
+                       <li>이미지 사이즈 : 350*350</li>
+                       <li>파일 사이즈 : 1M 이하</li>
+                       <li>파일 확장자 : png,jpg만 가능</li>
+                   </ul>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label  class="col-md-3 col-form-label">제목</label>
+                <div class="col-md-9">
+                   <input type="text" placeholder="제목을 작성해주세요" size="40">
+                       </div>
+                </div>
+
+            <div class="mb-3 row">
+                <label  class="col-md-12 col-form-label" style="text-align: center;">글 작성</label>
+               
+                <div class="col-md8 cont" contenteditable="true" placeholder="작성해주세요">
+
+
+
+                </div>
+            </div>
+         
+            <div class="mb-3 row text-center">
+                <div class="col-12 d-grid p-1 ">
+                    <button type="button" class="btn btn-lg btn-dark">취소하기</button>
+                    <button type="button" class="btn btn-lg btn-info">등록하기</button>
+                </div>
+            </div>
+        </div>   
+
+ 
+    </main>
+</body>
+</html>

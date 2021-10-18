@@ -1,0 +1,77 @@
+	.sorting{
+      height: 100px;
+      
+      }
+      .bd-placeholder-img {
+        font-homeSize: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-homeSize: 3.5rem;
+        }
+      }
+
+      .img{
+        height: 240px;
+        width: 100%;
+        border-radius: 5%;
+      }
+
+      .profile{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+
+      .card{
+        margin-bottom: 10px;
+        border: none;
+        background: none;
+        display: inline-block;
+      }
+   
+
+      .card-text{
+        font-weight: 1000;
+        margin-bottom: 3px;
+        color: rgb(66, 63, 73);
+      }
+
+      .id-link{
+        display: block;
+      }
+
+
+      .order-list{
+        list-style: none;
+        
+      }
+
+      .my-btn{
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display: inline-block;
+        margin-right: 7px;
+        margin-bottom: 15px;
+        padding: 3px;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        background: lightgray;
+        font-family: inherit;
+        color: black;
+        font-weight: bold;
+        font-homeSize: 15px;
+        text-decoration: none;
+        text-align: center;
+        transition: color .1s,background-color .1s,border-color .1s;
+        border-radius: 4px;
+        cursor: pointer;
+      }

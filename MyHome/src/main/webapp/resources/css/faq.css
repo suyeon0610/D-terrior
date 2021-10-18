@@ -1,0 +1,78 @@
+.accordion.accordion-border .acctitle, .accordion.accordion-border .acctitlec {
+    border-color: #CCC;
+    line-height: 44px;
+    padding: 0 15px 0 36px;
+    
+}
+
+.accordion.accordion-border .acc_content {
+    padding: 15px 15px 15px 36px;
+}
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.acctitle {
+    display: block;
+    position: relative;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    border:1px  solid #CCC;
+    cursor:pointer;
+}
+.acc_content {
+   margin-top: 10px;
+   display: block;
+    position: relative;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    border:1px  solid #CCC;
+}
+.icon-phone-sign:before {
+    content: "\e74b";
+}
+[class^="icon-"], [class*=" icon-"], [class^="icon-line-"], [class*=" icon-line-"], [class^="icon-line2-"], [class*=" icon-line2-"], .side-header #primary-menu ul > li.sub-menu > a:after {
+    display: inline-block;
+    font-family: 'font-icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mr-1, .mx-1 {
+    margin-right: 0.25rem !important;
+}
+.position-relative {
+    position: relative !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

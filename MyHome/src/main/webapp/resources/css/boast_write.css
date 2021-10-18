@@ -1,0 +1,58 @@
+body {
+    width: 480px;
+    margin: 0 auto;
+  }
+       span{
+          color: beige;
+      }
+      .ex{
+        margin-left: 400px;
+      }
+  [contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+  }
+  .cont{
+      border: 1px solid black;
+      width: 100%;
+      height: 200px;
+  }
+  #ngside {
+    position: fixed;
+    right: 100px;
+    bottom: 0;
+    top: 500px;
+    padding: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+
+    cursor: default;
+}
+
+@media (max-width: 1817px) {
+    #ngside {
+        display: none;
+    }
+}
+
+a {
+    color: black;
+}
+
+.fill-heart {
+    display: none;
+}
+.fill-scrap{
+    display: none;
+}
+#ngside > ul >li{
+    list-style: none;
+    margin:0 0px 30px 40px;
+}
+.icos{
+    text-align: center;
+}
+.fa-bookmark{
+    margin: 5px;
+}

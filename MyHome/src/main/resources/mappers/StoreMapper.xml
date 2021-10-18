@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.spring.myWeb.store.mapper.IStoreMapper">
+ 
+ 	<resultMap type="com.spring.myWeb.command.StoreVO" id="StoreMap">
+ 		<result property="deliPrice" column="deli_price"/>
+ 		<result property="deliPlus" column="deli_plus"/>
+ 		<result property="releaseDate" column="release_date"/>
+ 		<result property="productImg" column="product_img"/>
+ 		<result property="productExplan" column="product_explan"/>
+ 		<result property="userNum" column="user_num"/>
+ 	</resultMap>
+ 	
+ 	<sql id="search">
+ 		<choose>
+ 			<when test="category1=='best'">ORDER BY order_cnt DESC</when>
+ 			<when test="category1=='new'">ORDER BY reg_date DESC</when>
+ 			<when test="category1!=null and category2==null">WHERE category1=#{category1}ORDER BY pno DESC</when>
+ 			<when test="category1!=null and category2!=null">WHERE category1=#{category1} AND category2=#{category2}ORDER BY pno DESC</when>
+ 		</choose>
+ 	</sql>
+ 	
+ 	<sql id="paging">
+ 		<choose>
+ 			<when test="category1!=null and category2==null">WHERE category1=#{category1}</when>
+ 			<when test="category1!=null and category2!=null">WHERE category1=#{category1} AND category2=#{category2}</when>
+ 			<otherwise></otherwise>
+ 		</choose>
+
+ 	</sql>
+ 
+ 	<insert id="insert">
+ 		INSERT INTO store(pno, name, price, deli_price, deli_plus, category1, category2, release_date, thumbnail, product_img, product_explan, user_num)
+ 		VALUES(store_seq.NEXTVAL, #{name}, #{price}, #{deliPrice}, #{deliPlus, jdbcType=VARCHAR}, #{category1}, #{category2}, #{releaseDate, jdbcType=VARCHAR}, #{thumbnail}, #{productImg, jdbcType=VARCHAR}, #{productExplan, jdbcType=VARCHAR}, #{userNum})
+ 	
+ 	</insert>
+ 	
+ 	<select id="getDetail" resultMap="StoreMap">
+ 		SELECT * FROM store
+ 		WHERE pno = #{pno}
+ 	</select>
+ 	
+ 	<select id="getList" resultMap="StoreMap">
+ 		SELECT *
+		FROM
+		(
+			SELECT ROWNUM rn, tbl.*
+			FROM
+			(
+				SELECT *
+				FROM store
+				<include refid="search" />
+			) tbl
+		)
+		<![CDATA[
+		WHERE rn > (#{pageNum}-1)*#{countPerPage}
+		AND rn <= #{pageNum}*#{countPerPage}
+		]]>
+ 	</select>
+ 	
+ 	<select id="getTotalCount" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM store
+ 		<include refid="paging" />
+ 	</select>
+ 	
+ 	<update id="modify">
+ 		UPDATE store
+ 		SET name=#{name}, price=#{price}, deli_price=#{deliPrice}, deli_plus=#{deliPlus}, category1=#{category1}, category2=#{category2}, release_date=#{releaseDate}, thumbnail=#{thumbnail}, product_img=#{productImg}, product_explan=#{productExplan}
+ 		WHERE pbo = #{pno}
+ 	</update>
+ 	
+ 	<delete id="delete">
+		DELETE FROM store
+		WHERE pno = #{pno} 	
+ 	</delete>
+ 	
+ 	<insert id="cartIn">
+ 		INSERT INTO cart
+ 		VALUES (cart_seq.NEXTVAL, #{pno}, #{userNum})
+ 	</insert>
+ 	
+ 	<select id="getCartList" resultMap="StoreMap">
+		SELECT *
+		FROM store
+		WHERE pno IN (
+			SELECT pno
+			FROM cart
+			WHERE user_num=#{userNum}
+		)
+ 	</select>
+ 	
+ 	<delete id="deleteCart">
+ 		DELECT FROM cart
+ 		WHERE cno=#{cno}
+ 	</delete>
+ 	
+ 
+ </mapper>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> QnA </title>
+    <link rel="shortcut icon" href="../img/home-icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/QnApage.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row" style="margin-bottom: 10px; margin-left: 30%; padding: 0px; --bs-gutter-x:0rem;">
+                    <div class="btn-group col-md-2">
+                        <select class="form-control" name="#" id="#">
+                            <option value="0">정렬</option>
+                            <option value="1">제목</option>
+                            <option value="2">작성자</option>
+                            <option value="3">내용</option>
+                            <option value="4">제목+내용</option>
+                        </select>
+                        </ul>
+                    </div>
+                    <div id="#" class="my-2 col-md-4" style="border-radius: 50%;  position: relative; bottom:8px;"
+                        data-ride="carousel">
+                        <form class="navbar-form pull-left" role="search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="검색">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="16" height="16" fill="currentColor" class="bi bi-search"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                        </svg></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="list" id="#">
+                                                 
+                            <b style="margin-left: 45%; font-size: 20px;">질문과 답변 </b>
+                        </div>
+                        <div class="division">
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                               정렬
+                                </button>
+                                <ul class="dropdown-menu" style="width: 100px;">
+                                    <li><a class="dropdown-item" href="#">인기순</a></li>
+                                    <li><a class="dropdown-item" href="#">최신순</a></li>
+                                </ul>
+                              </div>
+                            <button class="btn btn-default btn-sm" style="position: relative; left: 88%;">질문하기</button> 
+                                
+                        </div>
+
+                        <div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr style="background-color: #17a2b8;">
+                                        <th width="10%">번호</th>
+                                        <th width="50%">제목 </th>
+                                        <th width="10%">작성자 </th>
+                                        <th width="20%">작성일</th>
+                                        <th width="10%">조회</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>게시글번호</td>
+                                        <td class="title" id="">
+
+                                            <a href="#">타이틀 </a>
+                                            <a href="#" style="color: crimson;">[3] </a>
+
+                                            <span class="new">NEW!</span>
+                                          
+                                        </td>
+                                        <td>아이디</td>
+                                        <td>게시글내용</td>
+                                        <td>조회수체크</td>
+                                    <tr>
+                                </tbody>
+                            </table>
+                            <nav class="pagination-sm pag">
+                                <ul class="pagination justify-content: center">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            이전
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            1
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            2
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            3
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            4
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            5
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            다음
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    
+</body>
+
+
+
+</html>

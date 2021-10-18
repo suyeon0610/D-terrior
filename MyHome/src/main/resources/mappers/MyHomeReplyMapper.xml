@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring.myWeb.myhome.mapper.IMyHomeReplyMapper">
+  
+  <resultMap type="com.spring.myWeb.command.MyHomeReplyVO" id="replyMap">
+  	<result column="regdate" property="regDate" />
+  	<result column="updatedate" property="updateDate" />  	
+  </resultMap>
+  
+  <insert id="regist">
+  	INSERT INTO myhomereply(bno, rno, writer, content, regdate)
+  	VALUES(#{bno}, myhomereply_seq.NEXTVAL, #{writer}, #{content}, sysdate)
+  </insert>
+  
+  <select id="getList" resultMap="replyMap">
+  SELECT * FROM
+	 (
+	  SELECT ROWNUM rn, tbl.* FROM
+		  	(
+		  	SELECT a.*, b.profile 
+		  	FROM myhomereply a LEFT JOIN users b
+		  	ON a.writer = b.nick_name
+		  	WHERE a.bno=#{bno}
+		  	ORDER BY a.regdate DESC   	
+		  	) tbl
+  	  )		  	
+  	<![CDATA[
+  		WHERE rn > (#{paging.nowPage} -1) * #{paging.countPerPage}
+  		AND rn <= #{paging.nowPage} * #{paging.countPerPage}
+  	]]>
+  </select>
+  
+  <update id="update">
+  	UPDATE myhomereply SET content=#{content}, updatedate=sysdate
+  	WHERE rno=#{rno}
+  </update>
+  
+  <delete id="delete">
+  	DELETE FROM myhomereply
+  	WHERE rno=#{rno}
+  </delete>
+  
+  <select id="getTotalReply" resultType="int">
+  	SELECT COUNT(*) FROM myhomereply
+  	WHERE bno=#{bno}
+  </select>  
+  
+  
+  
+  
+  
+</mapper>

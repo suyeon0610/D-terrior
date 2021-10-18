@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper	namespace="com.spring.myWeb.complete.mapper.ICompleteMapper">
+
+<resultMap type="com.spring.myWeb.command.CompleteVO" id="CompMap">
+		<result column="regdate" property="regDate" />
+		<result column="updatedate" property="updateDate"/>
+		<result column="like_cnt" property="likeCnt"/>
+		<result column="view_cnt" property="viewCnt"/>
+		<result column="scrap_cnt" property="scrapCnt"/>
+		<result column="homeform" property="homeForm"/>
+		<result column="homesize" property="homeSize"/>
+		<result column="thumb_img" property="thumbImg"/>
+		<result column="usernum" property="userNum"/>
+	</resultMap>
+	
+	<sql id="order">		
+		<choose>
+			<when test="sort == 2">ORDER BY view_cnt DESC</when>
+			<otherwise>ORDER BY regdate DESC</otherwise>
+		</choose>
+		
+	</sql>	
+	
+	<sql id="search">
+		<if test="place != ''">place = #{place, jdbcType=VARCHAR} </if>
+		<if test="place == ''">bno IS NOT NULL </if>
+		<if test="money2 == 1">  <![CDATA[AND money < 500]]></if>
+		<if test="money2 == 2">  <![CDATA[AND money >= 500 AND money < 1000]]></if>
+		<if test="money2 == 3">  <![CDATA[AND money >= 1000 AND money < 1500]]></if>
+		<if test="money2 == 4">  <![CDATA[AND money >= 1500 AND money < 2000]]></if>
+		<if test="money2 == 5">  <![CDATA[AND money >= 2000 AND money < 3000]]></if>
+		<if test="money2 == 6">  <![CDATA[AND money >= 3000 AND money < 4000]]></if>
+		<if test="money2 == 7">  <![CDATA[AND money >= 4000 AND money < 5000]]></if>
+		<if test="money2 == 8">  <![CDATA[AND money >= 5000]]></if>
+		<if test="homeSize != ''"> AND homesize = #{homeSize, jdbcType=VARCHAR}</if>
+	</sql>
+	
+	<insert id="regist">
+		INSERT INTO comp(bno, writer, title, content, thumb_img, money, homesize, place, room, imgs, usernum)
+		VALUES(myhome_seq.NEXTVAL, #{writer}, #{title}, #{content}, #{thumbImg, jdbcType=VARCHAR}, #{money, jdbcType=VARCHAR}, #{homeSize, jdbcType=VARCHAR}, #{place, jdbcType=VARCHAR}, #{room, jdbcType=VARCHAR}, #{imgs, jdbcType=VARCHAR}, #{userNum, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="getList" resultMap="CompMap">
+		SELECT * FROM
+			(
+			SELECT ROWNUM rn, tbl.* FROM
+				(
+				SELECT * FROM comp
+				WHERE <include refid="search" />
+				<include refid="order" />
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{nowPage}-1) * #{countPerPage} 
+		AND rn <= #{nowPage} * #{countPerPage}
+		]]> 
+	</select>
+	
+	<select id="getDetail" resultMap="CompMap">
+		SELECT * FROM comp
+		WHERE bno=#{bno}
+	</select>
+	
+	<select id="getTotalArticles" resultType="int">
+		SELECT COUNT(*) FROM comp
+		WHERE <include refid="search" />
+	</select>
+	
+	<update id="update">
+		UPDATE comp SET title=#{title}, content=#{content}, thumb_img=#{thumbImg, jdbcType=VARCHAR}, updatedate=sysdate, money=#{money, jdbcType=VARCHAR}, homesize=#{homeSize, jdbcType=VARCHAR}, place=#{place, jdbcType=VARCHAR}
+		, room=#{room, jdbcType=VARCHAR}, imgs=#{imgs, jdbcType=VARCHAR}, usernum=#{userNum, jdbcType=VARCHAR}
+		WHERE bno=#{bno}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM comp WHERE bno=#{bno}
+	</delete>
+	
+	<select id="getProfile" resultType="string">
+		SELECT profile FROM users
+		WHERE nick_name=#{writer}
+	</select>
+	
+	<update id="like">
+		UPDATE comp SET like_cnt=like_cnt+#{likeCnt}, scrap_cnt=scrap_cnt+ #{scrapCnt}
+		WHERE bno=#{bno}
+	</update>
+	
+	<select id="getScrap" resultType="string">
+		SELECT scrap FROM users
+		WHERE nick_name=#{writer}
+	</select>
+	
+	<update id="updateScrap">
+		UPDATE users SET scrap=#{scrap}
+		WHERE nick_name=#{writer}
+	</update>
+	
+	<update id="plusView">
+		UPDATE comp SET view_cnt = view_cnt + 1
+		WHERE bno=#{bno}
+	</update>
+	
+	<update id="plusScrap">
+		UPDATE myhome SET scrap_cnt = scrap_cnt + #{num}
+		WHERE bno=#{bno}
+	</update>
+	
+</mapper>

@@ -1,0 +1,44 @@
+
+.card {
+  margin-bottom: 10px;
+}
+#page-wrapper {
+padding-left: 250px;
+}
+
+#page-content-wrapper {
+width: 100%;
+padding: 20px;
+}
+/* 사이드바 스타일 */
+
+.sidebar-nav {
+width: 250px;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.sidebar-nav li {
+text-indent: 1.5em;
+line-height: 2.8em;
+}
+
+.sidebar-nav li a {
+display: block;
+text-decoration: none;
+color: #999;
+}
+
+.sidebar-nav li a:hover {
+color: rgb(20, 236, 243);
+background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav > .sidebar-brand {
+font-size: 1.3em;
+line-height: 3em;
+}
+.row{
+width: 90%;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  QnA  </title> 
+    <link rel="shortcut icon" href="../img/home-icon.png">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #contentForm {
+            width: 40%;
+            margin: 0 auto;
+            padding-top: 12%;
+        }
+        .table>thead>tr>th,
+        .table>tbody>tr>th {
+            background-color: #e6ecff;
+            text-align: center;
+        }
+        .btns{
+            text-align: right;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <form action="#" method="post">
+        <div id="contentForm"> <input type="hidden" name="#" value="#"> <input type="hidden"
+                name="groupId" value="#"> <input type="hidden" name="depth" value="#"> <input
+                type="hidden" name="#" value="#">
+            <div class="input-group input-group-sm" role="group" aria-label="...">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                       
+                        <tr>
+                            <th style="padding-bottom: 15px;">제목</th>
+                            <td><input type="text" name="title" value="" class="form-control"
+                                    aria-describedby="basic-addon1"></td>
+                        </tr>
+                        <tr>
+                            <th style="padding-bottom: 15px;">분류</th>
+                            <td>     
+                                <select class="form-control" name="#" id="#">
+									<option value="1">시공</option>
+									<option value="2">도배</option>
+									<option value="3">타일</option>
+									<option value="4">건축자재</option>
+									<option value="5">건축설비</option>
+									<option value="6">장판</option>
+									<option value="7">필름시트</option>
+								</select>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2"> <textarea class="form-control" rows="10" name="content"
+                                    placeholder="글을 적어 주세요."></textarea>
+                                        <form  action="#" method="post" enctype="#">
+                                         <input type="file" name="profile"> </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-group btn-group-sm" role="group" aria-label="..."> <input type="submit"
+                    class="btn btn-info btns" value="글쓰기"> 
+        </div>
+    </form>
+
+
+
+
+
+
+</body>
+
+</html>

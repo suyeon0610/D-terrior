@@ -1,0 +1,13 @@
+.active{
+    display: block !important;
+
+}
+
+#community{
+    display: none;
+    background-color: rgb(255, 253, 253);
+}
+#store{
+    display: none;
+    background-color: rgb(255, 253, 253);
+}
