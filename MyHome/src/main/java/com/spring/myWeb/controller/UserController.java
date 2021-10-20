@@ -115,7 +115,6 @@ public class UserController {
 
 			if (!file.isEmpty()) { // 업로드 파일이 있는 경우
 
-				String profile = "";
 				// 저장할 폴더 경로
 				String uploadPath = path + "\\" + userNum;
 
@@ -145,10 +144,7 @@ public class UserController {
 				File saveFile = new File(filePath);
 				file.transferTo(saveFile);
 
-				// sql에 저장할 파일 경로
-				profile = userNum + "/" + fileName;
-
-				vo.setProfile(profile);
+				vo.setProfile(userNum + "/" + fileName);
 
 			}
 

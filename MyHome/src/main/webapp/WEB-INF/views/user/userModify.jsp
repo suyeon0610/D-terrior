@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file = "../include/header.jsp" %> 
+
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +42,7 @@
 
 </head>
 
-<body>
+<body style="margin-top: 130px;">
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
@@ -246,3 +248,4 @@ function sample6_execDaumPostcode() {
 </script>
 
 </html>
+<%@include file = "../include/footer.jsp" %> 
