@@ -57,8 +57,8 @@ public class StoreService implements IStoreService {
 	}
 	
 	@Override
-	public void deleteCart(int cno) {
-		mapper.deleteCart(cno);
+	public void deleteCart(int pno, int userNum) {
+		mapper.deleteCart(pno, userNum);
 	}
 	
 }

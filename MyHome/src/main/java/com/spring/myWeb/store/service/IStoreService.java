@@ -32,6 +32,6 @@ public interface IStoreService {
 	List<StoreVO> getCartList(int userNum);
 	
 	// 장바구니 삭제
-	void deleteCart(int cno);
+	void deleteCart(int pno, int userNum);
 	
 }

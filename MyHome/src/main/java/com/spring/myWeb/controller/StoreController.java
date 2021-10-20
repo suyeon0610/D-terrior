@@ -257,9 +257,19 @@ public class StoreController {
 		return "inSuccess";
 	}
 	
+	// 장바구니 삭제
+	@ResponseBody
 	@PostMapping("/cartDelete")
-	public void cartDelete(@RequestParam int cno) {
+	public String cartDelete(@RequestParam String pno, HttpSession session) {
+		System.out.println("/store/cartDelete");
+		System.out.println(pno);
 		
+		int pro = Integer.parseInt(pno);
+		
+		int userNum = ((UserVO)session.getAttribute("user")).getUserNum();
+		service.deleteCart(pro, userNum);
+		
+		return "delSuccess";
 	}
 
 	// 이벤트 페이지 이동

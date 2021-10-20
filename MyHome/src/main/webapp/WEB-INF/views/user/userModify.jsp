@@ -37,6 +37,7 @@
   	vertical-align: middle;  	
   } 
   </style>
+
 </head>
 
 <body>
@@ -44,7 +45,7 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원정보 수정</h4>
-        <form method="post" enctype="multipart/form-data" class="validation-form" novalidate>
+        <form method="post" enctype="multipart/form-data" novalidate onsubmit="return formCheck()" class="validation-form">
         	<input type="hidden" name="id" value="${userInfo.id }">
         	<input type="hidden" name="userNum" value="${userInfo.userNum }">
           <div class="row">
@@ -55,7 +56,7 @@
 
               <div class="mb-3"> 
               	<label for="password">비밀번호</label> 
-              		<input type="password" name="pw" class="form-control" id="pw" placeholder="비밀번호를 적어주세요" required>
+              		<input type="password" class="form-control" id="pw" placeholder="비밀번호를 적어주세요" required>
                 <div class="invalid-feedback">
                 </div>
                
@@ -111,18 +112,91 @@
                     </div>
                  </div>
 
-                    <div class="mb-4"></div> <button id="mod-btn" class="btn btn-info btn-lg btn-block" type="button">수정 완료</button>
+                    <div class="mb-4"></div> <button id="mod-btn" class="btn btn-info btn-lg btn-block" type="submit">수정 완료</button>
         </form>
       </div>
     </div>
   </div>
 
-
-
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script>
-  function sample6_execDaumPostcode() {
+		  
+function formCheck() {
+	  if($('#phone2').val() === '' || $('#phone3').val === '' || $('#zipNum').val() === '' 
+			  || $('#zipBasic').val() === '' || $('#zipDetail').val() === '') {
+		  alert('정보를 모두 입력해 주세요.');
+		  return false;
+	  } else if($('#pw').val() === '') {
+		  alert('비밀번호를 입력해 주세요.');
+		  return false;
+	  } else {
+			
+		  console.log('비동기 시작');
+		  var flag = true;
+		  
+		  $.ajax({
+				  type : "POST",
+				  url : "<c:url value='/user/pwCheck' />",
+				  headers : {
+						"Content-Type" : "application/json"
+					},
+				  dataType : "text",
+				  data : $('#pw').val(),
+				  async: false,
+				  success : function(result) {
+					  	console.log('통신 성공');
+						if(result === 'pwCheckFail') {
+							alert('비밀번호를 다시 확인해 주세요.');
+							flag = false;
+						} else {
+							flag = true;
+						}
+				  },
+				  error : function() {
+					  console.log('통신 실패');
+				  }
+		  	}); // 비밀번호 확인 비동기
+		  return flag;
+		}		
+}
+	  
+$(function() {
+	 	  	
+	  
+	  // 관심분야 체크 박스
+	  const interests = '${userInfo.interest}'.split(',');
+	  
+	  for(var i=0; i<interests.length; i++) {
+		  for(var j=0; j<$('.checkcss').length; j++) {
+			  if(interests[i] == $('.checkcss')[j].value) {
+				  $('.checkcss')[j].checked = 'true';
+			  }
+		  }
+	  }
+	  
+	  // 프로필 미리보기
+	  function preView(input) {
+			if(input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.readAsDataURL(input.files[0]); 
+				
+				reader.onload = function(e) {
+					$('#prof-ori').css('display', 'none');
+					$('#prof').css('display', 'block');
+					$('#prof').attr('src', e.target.result);
+				};
+			}
+		}
+	  
+	  $('input[name=file]').change(function() {
+			preView(this);			
+		});
+  
+  });
+
+function sample6_execDaumPostcode() {
     new daum.Postcode({
       oncomplete: function (data) {
         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -169,53 +243,6 @@
       }
     }).open();
   }
-  
-  // jquery start
-  $(function() {
-	  
-	  // 관심분야 체크 박스
-	  const interests = '${userInfo.interest}'.split(',');
-	  
-	  for(var i=0; i<interests.length; i++) {
-		  for(var j=0; j<$('.checkcss').length; j++) {
-			  if(interests[i] == $('.checkcss')[j].value) {
-				  $('.checkcss')[j].checked = 'true';
-			  }
-		  }
-	  }
-	  
-	  // 프로필 미리보기
-	  function preView(input) {
-			if(input.files && input.files[0]){
-				var reader = new FileReader();
-				reader.readAsDataURL(input.files[0]); 
-				
-				reader.onload = function(e) {
-					$('#prof-ori').css('display', 'none');
-					$('#prof').css('display', 'block');
-					$('#prof').attr('src', e.target.result);
-					console.log(e.target);
-				};
-			}
-		}
-	  
-	  $('input[name=file]').change(function() {
-			preView(this);			
-		});
-	  
-	  const pw = '${userInfo.pw}';
-	  // 수정 완료 버튼
-	  $('#mod-btn').click(function() {
-		  if($('#phone2').val() == '' || $('#phone3').val == '' || $('#zipNum').val() == '' || $('#zipBasic').val() == '' || $('#zipDetail').val() == '') {
-			  alert('정보를 모두 입력해 주세요.');
-		  } else if($('#pw').val() == '' || $('#pwChk').val() == '') {
-			  alert('비밀번호를 입력해 주세요.');
-		  } else {
-			  $('#mod-btn').attr('type', 'submit');
-		  }
-		
-	}); 
-	
-}); //end jquery
 </script>
+
 </html>

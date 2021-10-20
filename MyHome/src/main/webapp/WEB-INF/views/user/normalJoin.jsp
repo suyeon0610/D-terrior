@@ -65,9 +65,7 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">회원가입(일반회원)</h4>
-				<form action="<c:url value='/user/userJoin' />" method="post"
-					class="validation-form" novalidate enctype="multipart/form-data"
-					onsubmit="return formcheck()" name="fc">
+				<form action="<c:url value='/user/userJoin' />" method="post" class="validation-form" novalidate enctype="multipart/form-data" onsubmit="return formcheck()" name="fc">
 					<span>(*)는 필수값입니다</span>
 					<div class="mb-3">
 						<label for="email">이메일(*)</label> <input type="email"

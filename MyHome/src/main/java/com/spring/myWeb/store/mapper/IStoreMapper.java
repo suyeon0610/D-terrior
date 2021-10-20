@@ -34,6 +34,6 @@ public interface IStoreMapper {
 	List<StoreVO> getCartList(int userNum);
 	
 	// 장바구니 삭제
-	void deleteCart(int cno);
+	void deleteCart(@Param("pno") int pno, @Param("userNum") int userNum);
 
 }

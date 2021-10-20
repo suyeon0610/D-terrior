@@ -112,10 +112,10 @@ public class UserController {
 			// ※경로를 resources로 잡르면 was 재실행 시 워크 스페이스 내용으로 바뀌면서 파일 자동 삭제 됨
 //			String resource = servletContext.getRealPath("/resources"); 
 			String path = "C:\\home\\quiz\\upload";
-			String profile = "";
 
 			if (!file.isEmpty()) { // 업로드 파일이 있는 경우
 
+				String profile = "";
 				// 저장할 폴더 경로
 				String uploadPath = path + "\\" + userNum;
 
@@ -160,6 +160,22 @@ public class UserController {
 		}
 
 		return "redirect:/user/mypage?type=home";
+	}
+	
+	// 회원 비밀번호 확인
+	@ResponseBody
+	@PostMapping("/pwCheck")
+	public String pwCheck(@RequestBody String pw, HttpSession session) {
+		System.out.println("/user/pwCheck: POST");
+		System.out.println(pw);
+		
+		String encPw = ((UserVO)session.getAttribute("user")).getPw(); // db에 저장된 pw
+		Boolean match = passwordEncoder.matches(pw, encPw);
+		
+		if(!match) {
+			return "pwCheckFail";
+		}		
+		return "pwCheck";
 	}
 
 	// 회원탈퇴요청

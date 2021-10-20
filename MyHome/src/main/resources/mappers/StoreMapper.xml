@@ -95,7 +95,7 @@
  	
  	<delete id="deleteCart">
  		DELECT FROM cart
- 		WHERE cno=#{cno}
+ 		WHERE pno=#{pno} AND user_num=#{userNum}
  	</delete>
  	
  
